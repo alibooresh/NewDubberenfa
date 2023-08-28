@@ -1,5 +1,5 @@
+import MenuIcon from "@mui/icons-material/Menu";
 import MicIcon from "@mui/icons-material/Mic";
-import AdbIcon from "@mui/icons-material/Adb";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -12,7 +12,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import MenuIcon from "@mui/icons-material/Menu";
 
 export interface Page{
     titlle:string,
@@ -105,7 +104,7 @@ export default function Header() {
             >
               {pages.map((page) => (
                 <MenuItem key={page.href} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.titlle}</Typography>
+                  <Button href={page.href}>{page.titlle}</Button>
                 </MenuItem>
               ))}
             </Menu>
@@ -132,6 +131,7 @@ export default function Header() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
+                href={page.href}
                 key={page.href}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
@@ -165,7 +165,7 @@ export default function Header() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting.href} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting.titlle}</Typography>
+                  <Button href={setting.href}>{setting.titlle}</Button>
                 </MenuItem>
               ))}
             </Menu>

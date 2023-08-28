@@ -20,7 +20,7 @@ export default function Login() {
   };
   return (
     <>
-      <Header />
+      <Header isLoggedIn />
       <Container component="main" maxWidth="xs">
         <Box
           sx={{

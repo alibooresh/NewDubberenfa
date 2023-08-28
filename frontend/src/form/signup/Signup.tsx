@@ -26,7 +26,7 @@ export default function Signup() {
 
   return (
     <>
-      <Header />
+      <Header isLoggedIn />
       <Container component="main" maxWidth="md">
         <Box
           sx={{

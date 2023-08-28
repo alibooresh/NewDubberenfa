@@ -1,4 +1,5 @@
 import MicIcon from "@mui/icons-material/Mic";
+import AdbIcon from "@mui/icons-material/Adb";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -11,6 +12,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export interface Page{
     titlle:string,
@@ -50,7 +52,7 @@ export default function Header() {
     setAnchorElUser(null);
   };
   return (
-    <AppBar color="secondary" position="static">
+    <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <MicIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -64,7 +66,7 @@ export default function Header() {
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".1rem",
+              letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
             }}
@@ -73,6 +75,16 @@ export default function Header() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -93,31 +105,35 @@ export default function Header() {
             >
               {pages.map((page) => (
                 <MenuItem key={page.href} onClick={handleCloseNavMenu}>
-                  <Typography
-                    noWrap
-                    component="a"
-                    href="/"
-                    sx={{
-                      mr: 2,
-                      display: { xs: "none", md: "flex" },
-                      fontFamily: "monospace",
-                      fontWeight: 700,
-                      letterSpacing: ".1rem",
-                      color: "inherit",
-                      textDecoration: "none",
-                    }}
-                  >
-                    DubberEnFa
-                  </Typography>
+                  <Typography textAlign="center">{page.titlle}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
+          <MicIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: "flex", md: "none" },
+              flexGrow: 1,
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            DubberEnFa
+          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                href={page.href}
                 key={page.href}
+                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page.titlle}
@@ -149,13 +165,7 @@ export default function Header() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting.href} onClick={handleCloseUserMenu}>
-                  <Button
-                    href={setting.href}
-                    key={setting.href}
-                    sx={{ color: "purple", display: "block" }}
-                  >
-                    {setting.titlle}
-                  </Button>
+                  <Typography textAlign="center">{setting.titlle}</Typography>
                 </MenuItem>
               ))}
             </Menu>
